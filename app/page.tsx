@@ -298,7 +298,6 @@ export default function Home() {
         <input ref={inputref} placeholder="enter item ..." />
         <button onClick={getText}>Add</button>
         <button onClick={gtstake}>gitstak</button>
-        <w3m-button></w3m-button>
       </div>
     </div>
   );
