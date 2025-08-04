@@ -5,6 +5,7 @@ import { parseEther as viemParseEther } from "viem";
 import styles from "./page.module.css";
 import { useEffect, useRef, useState } from "react";
 import { useWriteContract } from "wagmi";
+import { CheckCircle, Plus, Trash2, Trophy, Target, TrendingUp } from "lucide-react";
 
 // Component to display a progress bar based on completed tasks
 function ProgressBar({ todos }: { todos: { completed: boolean }[] }) {
@@ -12,18 +13,23 @@ function ProgressBar({ todos }: { todos: { completed: boolean }[] }) {
   const percentage = Math.round((completedCount / todos.length) * 100);
 
   return (
-    <div style={{ width: "100%", marginBottom: "1rem" }}>
-      <p style={{ marginBottom: "0.25rem" }}>
-        ✅ Completed: {completedCount} / {todos.length} ({todos.length ? percentage : 0}%)
-      </p>
-      <div style={{ height: "10px", background: "#eee", borderRadius: "4px" }}>
+    <div className={styles.progressContainer}>
+      <div className={styles.progressHeader}>
+        <div className={styles.progressInfo}>
+          <TrendingUp className={styles.progressIcon} />
+          <span className={styles.progressText}>
+            Progress: {completedCount} of {todos.length} tasks completed
+          </span>
+        </div>
+        <span className={styles.progressPercentage}>
+          {todos.length ? percentage : 0}%
+        </span>
+      </div>
+      <div className={styles.progressBarTrack}>
         <div
+          className={styles.progressBarFill}
           style={{
-            height: "100%",
             width: `${todos.length ? percentage : 0}%`,
-            background: "#4caf50",
-            borderRadius: "4px",
-            transition: "width 0.3s ease",
           }}
         ></div>
       </div>
@@ -217,12 +223,13 @@ export default function Home() {
     });
   };
 
-
   //---------------------
   // Add a new task from input
   const getText = async () => {
     if (inputref.current) {
-      const text = inputref.current.value;
+      const text = inputref.current.value.trim();
+      if (!text) return; // Don't add empty tasks
+      
       const items = { completed: false, text };
       setodos([...todos, items]);
 
@@ -236,6 +243,13 @@ export default function Home() {
       }
 
       inputref.current.value = "";
+    }
+  };
+
+  // Handle Enter key press in input
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      getText();
     }
   };
 
@@ -272,32 +286,107 @@ export default function Home() {
     setodos(newlist);
   };
 
+  // Check if all tasks are completed
+  const allTasksCompleted = todos.length > 0 && todos.every(todo => todo.completed);
+
   // UI rendering
   return (
-    <div className={styles.App}>
-      <h1>To Do List</h1>
-      <div className={styles.toDoCountaner}>
-        <ProgressBar todos={todos} />
-        <ul>
-          {todos.map((item, index) => {
-            return (
-              <div className={styles.chek}>
-                <li
-                  className={item.completed ? styles.Don : ""}
-                  onClick={() => handelClich(index)}
+    <div className={styles.container}>
+      {/* Background decoration */}
+      <div className={styles.backgroundDecoration}>
+        <div className={styles.blurCircleTop}></div>
+        <div className={styles.blurCircleBottom}></div>
+      </div>
+
+      <div className={styles.app}>
+        <header className={styles.header}>
+          <div className={styles.iconContainer}>
+            <Target className={styles.headerIcon} />
+          </div>
+          <h1 className={styles.title}>Task Manager</h1>
+          <p className={styles.subtitle}>Stay organized and achieve your goals</p>
+        </header>
+
+        {todos.length > 0 && <ProgressBar todos={todos} />}
+
+        <div className={styles.inputSection}>
+          <div className={styles.inputGroup}>
+            <input 
+              ref={inputref} 
+              className={styles.taskInput}
+              placeholder="What needs to be done?" 
+              onKeyPress={handleKeyPress}
+            />
+            <button 
+              onClick={getText}
+              className={styles.addButton}
+              aria-label="Add task"
+            >
+              <Plus className={styles.addIcon} />
+            </button>
+          </div>
+        </div>
+
+        {todos.length === 0 ? (
+          <div className={styles.emptyState}>
+            <div className={styles.emptyIconContainer}>
+              <Target className={styles.emptyIcon} />
+            </div>
+            <h3 className={styles.emptyTitle}>Ready to get started?</h3>
+            <p className={styles.emptyText}>Add your first task and begin your journey to productivity!</p>
+          </div>
+        ) : (
+          <div className={styles.tasksSection}>
+            <div className={styles.tasksList}>
+              {todos.map((item, index) => {
+                return (
+                  <div key={index} className={styles.taskItem}>
+                    <div className={styles.taskContent}>
+                      <button 
+                        className={`${styles.checkbox} ${item.completed ? styles.checked : ''}`}
+                        onClick={() => handelClich(index)}
+                        aria-label={item.completed ? "Mark as incomplete" : "Mark as complete"}
+                      >
+                        {item.completed && <CheckCircle className={styles.checkIcon} />}
+                      </button>
+                      <span 
+                        className={`${styles.taskText} ${item.completed ? styles.completed : ''}`}
+                        onClick={() => handelClich(index)}
+                      >
+                        {item.text}
+                      </span>
+                    </div>
+                    <button 
+                      onClick={() => deletItem(index)} 
+                      className={styles.deleteButton}
+                      aria-label="Delete task"
+                    >
+                      <Trash2 className={styles.deleteIcon} />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+
+            {allTasksCompleted && (
+              <div className={styles.completionSection}>
+                <div className={styles.completionContent}>
+                  <Trophy className={styles.trophyIcon} />
+                  <div className={styles.completionText}>
+                    <h3 className={styles.completionTitle}>Congratulations!</h3>
+                    <p className={styles.completionMessage}>All tasks completed! You can now withdraw your stake.</p>
+                  </div>
+                </div>
+                <button 
+                  onClick={gtstake}
+                  className={styles.withdrawButton}
                 >
-                  {item.text}
-                </li>
-                <span onClick={() => deletItem(index)} className={styles.sp}>
-                  X
-                </span>
+                  <span>Withdraw Stake</span>
+                </button>
               </div>
-            );
-          })}
-        </ul>
-        <input ref={inputref} placeholder="enter item ..." />
-        <button onClick={getText}>Add</button>
-        <button onClick={gtstake}>gitstak</button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

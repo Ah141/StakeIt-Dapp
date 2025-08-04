@@ -1,0 +1,321 @@
+/* Main Container */
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, 
+    rgb(248, 250, 252) 0%, 
+    rgba(219, 234, 254, 0.3) 50%, 
+    rgba(254, 243, 199, 0.2) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+/* Background Decoration */
+.backgroundDecoration {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.blurCircleTop {
+  position: absolute;
+  top: -10rem;
+  right: -10rem;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(147, 197, 253, 0.2);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+.blurCircleBottom {
+  position: absolute;
+  bottom: -10rem;
+  left: -10rem;
+  width: 20rem;
+  height: 20rem;
+  background: rgba(252, 211, 77, 0.2);
+  border-radius: 50%;
+  filter: blur(3rem);
+}
+
+/* Card Wrapper */
+.cardWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+}
+
+/* Main Card */
+.card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8px);
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(148, 163, 184, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  overflow: hidden;
+}
+
+/* Header Section */
+.header {
+  padding: 2.5rem 2rem 1.5rem;
+  text-align: center;
+}
+
+.iconContainer {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgb(59, 130, 246), rgb(37, 99, 235));
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25);
+  margin-bottom: 1.5rem;
+}
+
+.icon {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(30, 41, 59);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+
+.subtitle {
+  color: rgb(100, 116, 139);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Content Section */
+.content {
+  padding: 0 2rem 2.5rem;
+}
+
+.connectedState,
+.disconnectedState {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Success Box */
+.successBox {
+  background: linear-gradient(90deg, rgb(236, 253, 245), rgb(219, 234, 254));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(209, 250, 229);
+}
+
+.successHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.checkIcon {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: rgb(34, 197, 94);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkSvg {
+  width: 1rem;
+  height: 1rem;
+  color: white;
+}
+
+.successText {
+  color: rgb(6, 78, 59);
+  font-weight: 500;
+}
+
+.addressText {
+  color: rgb(21, 128, 61);
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0;
+}
+
+/* Continue Button */
+.continueButton {
+  width: 100%;
+  background: linear-gradient(90deg, rgb(37, 99, 235), rgb(29, 78, 216));
+  color: white;
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.continueButton:hover {
+  background: linear-gradient(90deg, rgb(29, 78, 216), rgb(30, 64, 175));
+  box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.25);
+  transform: translateY(-2px);
+}
+
+.arrowIcon {
+  width: 1rem;
+  height: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.continueButton:hover .arrowIcon {
+  transform: translateX(4px);
+}
+
+/* Warning Box */
+.warningBox {
+  background: linear-gradient(90deg, rgb(254, 243, 199), rgb(255, 237, 213));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgb(252, 211, 77);
+}
+
+.warningHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.walletIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: rgb(217, 119, 6);
+}
+
+.warningText {
+  color: rgb(146, 64, 14);
+  font-weight: 500;
+}
+
+.warningSubtext {
+  color: rgb(180, 83, 9);
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Button Group */
+.buttonGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.web3ModalWrapper {
+  width: 100%;
+}
+
+/* Connect Button */
+.connectButton {
+  width: 100%;
+  background: linear-gradient(90deg, rgb(241, 245, 249), rgb(226, 232, 240));
+  color: rgb(51, 65, 85);
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.connectButton:hover:not(.connectButtonDisabled) {
+  background: linear-gradient(90deg, rgb(226, 232, 240), rgb(203, 213, 225));
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.connectButtonDisabled {
+  background: linear-gradient(90deg, rgb(248, 250, 252), rgb(241, 245, 249));
+  color: rgb(148, 163, 184);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.buttonWalletIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.spinnerIcon {
+  width: 1rem;
+  height: 1rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: rgb(148, 163, 184);
+  margin-top: 1.5rem;
+  margin-bottom: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .container {
+    padding: 0.5rem;
+  }
+  
+  .header {
+    padding: 2rem 1.5rem 1rem;
+  }
+  
+  .content {
+    padding: 0 1.5rem 2rem;
+  }
+  
+  .title {
+    font-size: 1.25rem;
+  }
+  
+  .iconContainer {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
