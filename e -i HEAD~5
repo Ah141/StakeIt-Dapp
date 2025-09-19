@@ -1,0 +1,11 @@
+[33me157e28[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Update README.md
+[33m415c9df[m Update README.md
+[33ma3e25af[m add backend
+[33m0a9531f[m Enhanced UI/UX: applied minimal layout, soft colors, and improved spacing
+[33mca83535[m Redirect users to home page upon wallet connection, block access if not connected
+[33m94b5e44[m Integrated smart contract with UI using wagmi hooks and writeContract
+[33m2f8233b[m add context file
+[33m4a11ab5[m add Wagmi config file for Web3 setup
+[33mbc34b1d[m Update README.md
+[33m021c0f1[m first commit
+[33mc825e75[m Initial commit from Create Next App

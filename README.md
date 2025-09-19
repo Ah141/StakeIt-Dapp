@@ -1,39 +1,70 @@
+# Demo: StakeIt – Gamified To-Do DApp on Ethereum
 
-<<<<<<< HEAD
-=======
-## Getting Started
+## Overview
 
-First, run the development server:
+**StakeIt** is a simple decentralized application (DApp) that combines productivity with blockchain incentives.
+Users stake a small fixed amount of ETH to create their first task. They can then add more tasks without additional staking. Once all tasks are completed, the staked ETH can be withdrawn.
+
+This project demonstrates how gamification and smart contracts can be combined to promote accountability and task completion.
+
+
+
+## Usage demo
+
+
+
+
+## Build & Deploy
+
+### Prerequisites
+
+* Node.js (v16+ recommended)
+* npm or yarn
+* MetaMask (or any Ethereum wallet for testing)
+* foundry or Truffle (for local Ethereum development)
+
+### Installation
+
+Clone the repo and install dependencies:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Ah141/StakeIt-Dapp
+cd StakeIt-Dapp
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Compile & Deploy Contracts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Open your browser at `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## Smart Contract Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* **Stake to start** – first task requires staking `0.0001 ETH`.
+* **Add unlimited tasks** – without extra staking.
+* **Complete tasks** – mark tasks as done.
+* **Withdraw stake** – once all tasks are completed, reclaim ETH.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Frontend
 
-## Deploy on Vercel
+* **React + Next.js** for UI.
+* **wagmi** for Ethereum wallet connection and contract interaction.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Live Deployment
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# StakeIt
->>>>>>> 1df7b46 (add Wagmi config file for Web3 setup)
+*Coming soon – link to deployed version.*
+
+## Architecture
+
+* **Smart Contract**: Solidity contract managing tasks & stakes.
+* **Frontend**: React/Next.js UI using wagmi to connect with MetaMask.
+* **Blockchain**: Ethereum-compatible network (local or testnet).
+
+## License
+
+MIT License.

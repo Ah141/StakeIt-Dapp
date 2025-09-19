@@ -234,8 +234,6 @@
 /* Connect Button */
 .connectButton {
   width: 100%;
-  background: linear-gradient(90deg, rgb(241, 245, 249), rgb(226, 232, 240));
-  color: rgb(51, 65, 85);
   font-weight: 500;
   padding: 1rem 1.5rem;
   border-radius: 1rem;
@@ -249,14 +247,11 @@
 }
 
 .connectButton:hover:not(.connectButtonDisabled) {
-  background: linear-gradient(90deg, rgb(226, 232, 240), rgb(203, 213, 225));
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   transform: translateY(-2px);
 }
 
 .connectButtonDisabled {
-  background: linear-gradient(90deg, rgb(248, 250, 252), rgb(241, 245, 249));
-  color: rgb(148, 163, 184);
   cursor: not-allowed;
   transform: none;
 }

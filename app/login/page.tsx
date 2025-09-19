@@ -9,10 +9,11 @@ export default function LoginPage() {
   const { isConnected, address } = useAccount();
   const { connect, connectors, isPending } = useConnect();
 
-  const truncateAddress = (addr) => {
-    if (!addr) return "";
-    return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
-  };
+  const truncateAddress = (addr: string | undefined) => {
+  if (!addr) return "";
+  return `${addr.slice(0, 6)}...${addr.slice(-4)}`;
+};
+
 
   return (
     <div className={styles.container}>
@@ -82,29 +83,7 @@ export default function LoginPage() {
 
                 {/* Connection buttons */}
                 <div className={styles.buttonGroup}>
-                  {/* Web3Modal button */}
-                  <div className={styles.web3ModalWrapper}>
                     <w3m-button />
-                  </div>
-
-                  {/* Alternative connect button */}
-                  <button
-                    disabled={isPending}
-                    onClick={() => connect({ connector: connectors[0] })}
-                    className={`${styles.connectButton} ${isPending ? styles.connectButtonDisabled : ''}`}
-                  >
-                    {isPending ? (
-                      <>
-                        <Loader2 className={styles.spinnerIcon} />
-                        <span>Connecting...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Wallet className={styles.buttonWalletIcon} />
-                        <span>Connect Wallet</span>
-                      </>
-                    )}
-                  </button>
                 </div>
               </div>
             )}
