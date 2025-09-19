@@ -11,7 +11,7 @@ This project demonstrates how gamification and smart contracts can be combined t
 
 ## Usage demo
 
-
+https://github.com/user-attachments/assets/9e460046-a23d-4e96-8248-2f91ff088a9c
 
 
 ## Build & Deploy
